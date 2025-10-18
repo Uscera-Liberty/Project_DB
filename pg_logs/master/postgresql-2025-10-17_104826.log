@@ -1,0 +1,8 @@
+2025-10-17 10:48:26.117 UTC [3317] LOG:  starting PostgreSQL 17.6 (Ubuntu 17.6-2.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.4.0-1ubuntu1~22.04.2) 11.4.0, 64-bit
+2025-10-17 10:48:26.119 UTC [3317] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2025-10-17 10:48:26.122 UTC [3317] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2025-10-17 10:48:26.175 UTC [3321] LOG:  database system was shut down at 2025-10-17 10:48:25 UTC
+2025-10-17 10:48:26.220 UTC [3317] LOG:  database system is ready to accept connections
+2025-10-17 10:48:27.412 UTC [3328] postgres@template1 LOG:  statement: 
+2025-10-17 10:48:28.027 UTC [3331] postgres@template1 LOG:  statement: 
+2025-10-17 10:48:28.645 UTC [3334] postgres@template1 LOG:  statement: 

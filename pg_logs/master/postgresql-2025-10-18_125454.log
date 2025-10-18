@@ -1,0 +1,17 @@
+2025-10-18 12:54:54.561 UTC [3987] LOG:  starting PostgreSQL 17.6 (Ubuntu 17.6-2.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.4.0-1ubuntu1~22.04.2) 11.4.0, 64-bit
+2025-10-18 12:54:54.562 UTC [3987] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2025-10-18 12:54:54.565 UTC [3987] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2025-10-18 12:54:54.620 UTC [3991] LOG:  database system was shut down at 2025-10-18 12:54:53 UTC
+2025-10-18 12:54:54.672 UTC [3987] LOG:  database system is ready to accept connections
+2025-10-18 12:54:55.857 UTC [3999] postgres@template1 LOG:  statement: 
+2025-10-18 12:54:56.493 UTC [4002] postgres@template1 LOG:  statement: 
+2025-10-18 12:54:57.076 UTC [4005] postgres@template1 LOG:  statement: 
+2025-10-18 12:57:52.580 UTC [4100] postgres@postgres LOG:  statement: SHOW listen_addresses;
+2025-10-18 12:58:31.044 UTC [4106] postgres@postgres LOG:  statement: alter system set listen_addresses = '*';
+2025-10-18 12:58:50.908 UTC [3987] LOG:  received fast shutdown request
+2025-10-18 12:58:50.910 UTC [3987] LOG:  aborting any active transactions
+2025-10-18 12:58:51.033 UTC [3987] LOG:  background worker "logical replication launcher" (PID 3995) exited with exit code 1
+2025-10-18 12:58:51.041 UTC [3989] LOG:  shutting down
+2025-10-18 12:58:51.175 UTC [3989] LOG:  checkpoint starting: shutdown immediate
+2025-10-18 12:58:51.194 UTC [3989] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.011 s, sync=0.001 s, total=0.021 s; sync files=2, longest=0.001 s, average=0.001 s; distance=16384 kB, estimate=16384 kB; lsn=0/5000028, redo lsn=0/5000028
+2025-10-18 12:58:51.347 UTC [3987] LOG:  database system is shut down

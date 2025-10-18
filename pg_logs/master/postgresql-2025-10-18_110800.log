@@ -1,0 +1,81 @@
+2025-10-18 11:08:00.437 UTC [751] LOG:  starting PostgreSQL 17.6 (Ubuntu 17.6-2.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.4.0-1ubuntu1~22.04.2) 11.4.0, 64-bit
+2025-10-18 11:08:00.475 UTC [751] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2025-10-18 11:08:00.507 UTC [751] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2025-10-18 11:08:01.033 UTC [813] LOG:  database system was interrupted; last known up at 2025-10-17 10:48:26 UTC
+2025-10-18 11:08:01.577 UTC [813] LOG:  database system was not properly shut down; automatic recovery in progress
+2025-10-18 11:08:01.606 UTC [813] LOG:  redo starts at 0/19C22E0
+2025-10-18 11:08:01.607 UTC [813] LOG:  invalid record length at 0/19C2318: expected at least 24, got 0
+2025-10-18 11:08:01.607 UTC [813] LOG:  redo done at 0/19C22E0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.01 s
+2025-10-18 11:08:01.666 UTC [811] LOG:  checkpoint starting: end-of-recovery immediate wait
+2025-10-18 11:08:01.729 UTC [811] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.011 s, sync=0.001 s, total=0.075 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/19C2318, redo lsn=0/19C2318
+2025-10-18 11:08:02.012 UTC [751] LOG:  database system is ready to accept connections
+2025-10-18 11:08:04.584 UTC [851] postgres@template1 LOG:  statement: 
+2025-10-18 11:08:05.958 UTC [869] postgres@template1 LOG:  statement: 
+2025-10-18 11:08:07.188 UTC [888] postgres@template1 LOG:  statement: 
+2025-10-18 11:15:43.100 UTC [2896] postgres@postgres LOG:  statement: CREATE DATABASE u68824;
+2025-10-18 11:15:43.107 UTC [2896] postgres@postgres ERROR:  database "u68824" already exists
+2025-10-18 11:15:43.107 UTC [2896] postgres@postgres STATEMENT:  CREATE DATABASE u68824;
+2025-10-18 11:15:43.266 UTC [2897] postgres@u68824 LOG:  statement: CREATE TABLE users (
+	    user_id SERIAL PRIMARY KEY,
+	    login VARCHAR(255),
+	    hashed_password VARCHAR(255)
+	);
+2025-10-18 11:15:43.357 UTC [2897] postgres@u68824 ERROR:  relation "users" already exists
+2025-10-18 11:15:43.357 UTC [2897] postgres@u68824 STATEMENT:  CREATE TABLE users (
+	    user_id SERIAL PRIMARY KEY,
+	    login VARCHAR(255),
+	    hashed_password VARCHAR(255)
+	);
+2025-10-18 11:15:43.366 UTC [2897] postgres@u68824 LOG:  statement: CREATE TABLE programming_languages (
+	    id SERIAL PRIMARY KEY,
+	    guid VARCHAR(255)
+	);
+2025-10-18 11:15:43.367 UTC [2897] postgres@u68824 ERROR:  relation "programming_languages" already exists
+2025-10-18 11:15:43.367 UTC [2897] postgres@u68824 STATEMENT:  CREATE TABLE programming_languages (
+	    id SERIAL PRIMARY KEY,
+	    guid VARCHAR(255)
+	);
+2025-10-18 11:15:43.374 UTC [2897] postgres@u68824 LOG:  statement: CREATE TABLE applications (
+	    id SERIAL PRIMARY KEY,
+	    full_name VARCHAR(150) NOT NULL,
+	    gender VARCHAR(10) NOT NULL,
+	    phone VARCHAR(15) NOT NULL,
+	    email VARCHAR(100) NOT NULL,
+	    date DATE NOT NULL,
+	    bio TEXT NOT NULL,
+	    agreement BOOLEAN NOT NULL,
+	    user_id INT REFERENCES users(user_id) ON DELETE SET NULL
+	);
+2025-10-18 11:15:43.381 UTC [2897] postgres@u68824 ERROR:  relation "applications" already exists
+2025-10-18 11:15:43.381 UTC [2897] postgres@u68824 STATEMENT:  CREATE TABLE applications (
+	    id SERIAL PRIMARY KEY,
+	    full_name VARCHAR(150) NOT NULL,
+	    gender VARCHAR(10) NOT NULL,
+	    phone VARCHAR(15) NOT NULL,
+	    email VARCHAR(100) NOT NULL,
+	    date DATE NOT NULL,
+	    bio TEXT NOT NULL,
+	    agreement BOOLEAN NOT NULL,
+	    user_id INT REFERENCES users(user_id) ON DELETE SET NULL
+	);
+2025-10-18 11:15:43.382 UTC [2897] postgres@u68824 LOG:  statement: CREATE TABLE application_languages (
+	    application_id INT NOT NULL REFERENCES applications(id) ON DELETE CASCADE,
+	    language_id INT NOT NULL REFERENCES programming_languages(id) ON DELETE CASCADE,
+	    PRIMARY KEY (application_id, language_id)
+	);
+2025-10-18 11:15:43.383 UTC [2897] postgres@u68824 ERROR:  relation "application_languages" already exists
+2025-10-18 11:15:43.383 UTC [2897] postgres@u68824 STATEMENT:  CREATE TABLE application_languages (
+	    application_id INT NOT NULL REFERENCES applications(id) ON DELETE CASCADE,
+	    language_id INT NOT NULL REFERENCES programming_languages(id) ON DELETE CASCADE,
+	    PRIMARY KEY (application_id, language_id)
+	);
+2025-10-18 11:18:01.978 UTC [811] LOG:  checkpoint starting: time
+2025-10-18 11:18:03.293 UTC [811] LOG:  checkpoint complete: wrote 14 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.309 s, sync=0.001 s, total=1.316 s; sync files=16, longest=0.001 s, average=0.001 s; distance=64 kB, estimate=64 kB; lsn=0/19D2600, redo lsn=0/19D25A8
+2025-10-18 11:21:40.376 UTC [3000] postgres@postgres LOG:  statement: SHOW config_file
+2025-10-18 11:23:54.341 UTC [751] LOG:  received fast shutdown request
+2025-10-18 11:23:54.342 UTC [751] LOG:  aborting any active transactions
+2025-10-18 11:23:54.474 UTC [751] LOG:  background worker "logical replication launcher" (PID 824) exited with exit code 1
+2025-10-18 11:23:54.475 UTC [811] LOG:  shutting down
+2025-10-18 11:23:54.475 UTC [811] LOG:  checkpoint starting: shutdown immediate
+2025-10-18 11:23:54.478 UTC [811] LOG:  checkpoint complete: wrote 0 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.004 s; sync files=0, longest=0.000 s, average=0.000 s; distance=0 kB, estimate=58 kB; lsn=0/19D26B0, redo lsn=0/19D26B0
+2025-10-18 11:23:54.515 UTC [751] LOG:  database system is shut down

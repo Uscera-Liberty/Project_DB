@@ -1,0 +1,37 @@
+2025-10-18 11:50:46.524 UTC [3247] LOG:  starting PostgreSQL 17.6 (Ubuntu 17.6-2.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.4.0-1ubuntu1~22.04.2) 11.4.0, 64-bit
+2025-10-18 11:50:46.526 UTC [3247] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2025-10-18 11:50:46.529 UTC [3247] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2025-10-18 11:50:46.583 UTC [3251] LOG:  database system was shut down at 2025-10-18 11:50:45 UTC
+2025-10-18 11:50:46.636 UTC [3247] LOG:  database system is ready to accept connections
+2025-10-18 11:50:47.815 UTC [3259] postgres@template1 LOG:  statement: 
+2025-10-18 11:50:48.443 UTC [3262] postgres@template1 LOG:  statement: 
+2025-10-18 11:50:49.061 UTC [3265] postgres@template1 LOG:  statement: 
+2025-10-18 11:55:46.682 UTC [3249] LOG:  checkpoint starting: time
+2025-10-18 11:55:46.699 UTC [3249] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.008 s, sync=0.001 s, total=0.018 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/19D29A8, redo lsn=0/19D2950
+2025-10-18 11:58:29.688 UTC [3247] LOG:  received fast shutdown request
+2025-10-18 11:58:29.689 UTC [3247] LOG:  aborting any active transactions
+2025-10-18 11:58:29.821 UTC [3247] LOG:  background worker "logical replication launcher" (PID 3255) exited with exit code 1
+2025-10-18 11:58:29.822 UTC [3249] LOG:  shutting down
+2025-10-18 11:58:29.873 UTC [3249] LOG:  checkpoint starting: shutdown immediate
+cp: cannot create regular file '/var/lib/postgresql/wal_archive/000000010000000000000001': No such file or directory
+2025-10-18 11:58:29.951 UTC [3254] LOG:  archive command failed with exit code 1
+2025-10-18 11:58:29.951 UTC [3254] DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/wal_archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/wal_archive/000000010000000000000001
+2025-10-18 11:58:29.995 UTC [3249] LOG:  checkpoint complete: wrote 0 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.123 s; sync files=0, longest=0.000 s, average=0.000 s; distance=6325 kB, estimate=6325 kB; lsn=0/2000028, redo lsn=0/2000028
+cp: cannot create regular file '/var/lib/postgresql/wal_archive/000000010000000000000001': No such file or directory
+2025-10-18 11:58:30.056 UTC [3254] LOG:  archive command failed with exit code 1
+2025-10-18 11:58:30.056 UTC [3254] DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/wal_archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/wal_archive/000000010000000000000001
+cp: cannot create regular file '/var/lib/postgresql/wal_archive/000000010000000000000001': No such file or directory
+2025-10-18 11:58:31.070 UTC [3254] LOG:  archive command failed with exit code 1
+2025-10-18 11:58:31.070 UTC [3254] DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/wal_archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/wal_archive/000000010000000000000001
+2025-10-18 11:58:31.070 UTC [3254] WARNING:  archiving write-ahead log file "000000010000000000000001" failed too many times, will try again later
+cp: cannot create regular file '/var/lib/postgresql/wal_archive/000000010000000000000001': No such file or directory
+2025-10-18 11:58:31.086 UTC [3254] LOG:  archive command failed with exit code 1
+2025-10-18 11:58:31.086 UTC [3254] DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/wal_archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/wal_archive/000000010000000000000001
+cp: cannot create regular file '/var/lib/postgresql/wal_archive/000000010000000000000001': No such file or directory
+2025-10-18 11:58:32.113 UTC [3254] LOG:  archive command failed with exit code 1
+2025-10-18 11:58:32.113 UTC [3254] DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/wal_archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/wal_archive/000000010000000000000001
+cp: cannot create regular file '/var/lib/postgresql/wal_archive/000000010000000000000001': No such file or directory
+2025-10-18 11:58:33.128 UTC [3254] LOG:  archive command failed with exit code 1
+2025-10-18 11:58:33.128 UTC [3254] DETAIL:  The failed archive command was: test ! -f /var/lib/postgresql/wal_archive/000000010000000000000001 && cp pg_wal/000000010000000000000001 /var/lib/postgresql/wal_archive/000000010000000000000001
+2025-10-18 11:58:33.128 UTC [3254] WARNING:  archiving write-ahead log file "000000010000000000000001" failed too many times, will try again later
+2025-10-18 11:58:33.165 UTC [3247] LOG:  database system is shut down

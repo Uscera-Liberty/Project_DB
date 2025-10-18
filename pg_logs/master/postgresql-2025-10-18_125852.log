@@ -1,0 +1,30 @@
+2025-10-18 12:58:52.025 UTC [4124] LOG:  starting PostgreSQL 17.6 (Ubuntu 17.6-2.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.4.0-1ubuntu1~22.04.2) 11.4.0, 64-bit
+2025-10-18 12:58:52.027 UTC [4124] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2025-10-18 12:58:52.027 UTC [4124] LOG:  listening on IPv6 address "::", port 5432
+2025-10-18 12:58:52.033 UTC [4124] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2025-10-18 12:58:52.088 UTC [4128] LOG:  database system was shut down at 2025-10-18 12:58:51 UTC
+2025-10-18 12:58:52.137 UTC [4124] LOG:  database system is ready to accept connections
+2025-10-18 12:58:53.281 UTC [4136] postgres@template1 LOG:  statement: 
+2025-10-18 12:58:53.902 UTC [4139] postgres@template1 LOG:  statement: 
+2025-10-18 12:58:54.515 UTC [4142] postgres@template1 LOG:  statement: 
+2025-10-18 12:59:25.895 UTC [4147] postgres@postgres FATAL:  password authentication failed for user "postgres"
+2025-10-18 12:59:25.895 UTC [4147] postgres@postgres DETAIL:  User "postgres" has no password assigned.
+	Connection matched file "/etc/postgresql/17/main/pg_hba.conf" line 133: "host	all	all		192.168.56.0/24		scram-sha-256"
+2025-10-18 12:59:25.969 UTC [4148] postgres@postgres FATAL:  password authentication failed for user "postgres"
+2025-10-18 12:59:25.969 UTC [4148] postgres@postgres DETAIL:  User "postgres" has no password assigned.
+	Connection matched file "/etc/postgresql/17/main/pg_hba.conf" line 133: "host	all	all		192.168.56.0/24		scram-sha-256"
+2025-10-18 12:59:44.634 UTC [4151] postgres@postgres FATAL:  password authentication failed for user "postgres"
+2025-10-18 12:59:44.634 UTC [4151] postgres@postgres DETAIL:  User "postgres" has no password assigned.
+	Connection matched file "/etc/postgresql/17/main/pg_hba.conf" line 133: "host	all	all		192.168.56.0/24		scram-sha-256"
+2025-10-18 12:59:44.700 UTC [4152] postgres@postgres FATAL:  password authentication failed for user "postgres"
+2025-10-18 12:59:44.700 UTC [4152] postgres@postgres DETAIL:  User "postgres" has no password assigned.
+	Connection matched file "/etc/postgresql/17/main/pg_hba.conf" line 133: "host	all	all		192.168.56.0/24		scram-sha-256"
+2025-10-18 12:59:57.738 UTC [4154] replicator@[unknown] FATAL:  no pg_hba.conf entry for replication connection from host "192.168.56.11", user "replicator", SSL encryption
+2025-10-18 12:59:57.793 UTC [4155] replicator@[unknown] FATAL:  no pg_hba.conf entry for replication connection from host "192.168.56.11", user "replicator", no encryption
+2025-10-18 13:01:00.770 UTC [4124] LOG:  received fast shutdown request
+2025-10-18 13:01:00.772 UTC [4124] LOG:  aborting any active transactions
+2025-10-18 13:01:00.905 UTC [4124] LOG:  background worker "logical replication launcher" (PID 4132) exited with exit code 1
+2025-10-18 13:01:00.908 UTC [4126] LOG:  shutting down
+2025-10-18 13:01:01.017 UTC [4126] LOG:  checkpoint starting: shutdown immediate
+2025-10-18 13:01:01.038 UTC [4126] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.011 s, sync=0.001 s, total=0.023 s; sync files=2, longest=0.001 s, average=0.001 s; distance=16384 kB, estimate=16384 kB; lsn=0/6000028, redo lsn=0/6000028
+2025-10-18 13:01:01.208 UTC [4124] LOG:  database system is shut down

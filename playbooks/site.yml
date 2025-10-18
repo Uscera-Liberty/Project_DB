@@ -1,0 +1,146 @@
+---
+- name: Prepare machines with apt
+  hosts: all
+  become: yes
+  tasks:
+    - name: update apt
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: install common utilities
+      apt:
+        name:
+          - curl
+          - ca-certificates
+          - gnupg
+          - lsb-release
+        state: present
+
+- name: Install postgreSQL on db hosts
+  hosts: db
+  become: yes
+  vars:
+    postgres_version: 17
+  tasks:
+    - name: ensure tmp dir exists
+      file:
+        path: /tmp/ansible
+        state: directory
+        mode: '1777'
+    - name: Ensure CA certf
+      apt:
+        name: ca-certificates
+        state: present
+
+    - name: Add postgresql apt repo
+      apt_key:
+        url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+        state: present
+    - name: add repo
+      apt_repository:
+        repo: "deb https://apt.postgresql.org/pub/repos/apt {{ansible_distribution_release}}-pgdg main"
+        state: present
+    - name: install server package
+      apt:
+        name: "postgresql-{{postgres_version}}"
+        state: present
+        update_cache: yes
+    - name: postgre is enabled and started
+      systemd:
+       name: postgresql
+       enabled: yes
+       state: started
+    - name: copy sql schema to remote
+      ansible.builtin.copy:
+        src: ../init-schema.sql
+        dest: /tmp/init-schema.sql
+        mode: '0644'
+        owner: postgres
+        group: postgres
+    - name: apply file
+      become_user: postgres
+      shell: psql -f /tmp/init-schema.sql
+
+
+- name: install docker on web-host
+  hosts: web
+  become: yes
+  tasks:
+    - name: add docker gpg key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: add docker repo
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable"
+        state: present
+    - name: install docker package
+      apt:
+        name:
+          - docker-ce-cli
+          - containerd.io
+          - docker-ce
+          - python3-pip
+          - python3-setuptools
+        state: present
+        update_cache: yes
+    - name: install docker sdk
+      pip:
+        name:
+          - docker
+          - docker-compose
+        state: present
+        executable: pip3
+
+    - name: docker is running
+      systemd:
+        name: docker
+        enabled: yes
+        state: started
+    - name: add vagrant to docker group
+      user:
+        name: vagrant
+        groups: docker
+        append: yes
+    - name: create app arch loc
+      archive:
+        path: ../wb6/
+        dest: /tmp/wb6.tar.gz
+        format: gz
+      delegate_to: localhost
+      become: no
+      run_once: yes
+    - name: copy app arch to remote
+      copy:
+        src: /tmp/wb6.tar.gz
+        dest: /tmp/wb6.tar.gz
+        mode: '0644'
+    - name: extract app arch
+      unarchive:
+        src: /tmp/wb6.tar.gz
+        dest: /home/vagrant
+        remote_src: yes
+        owner: vagrant
+        group: vagrant
+    - name: remove archive
+      file:
+        path: /tmp/wb6.tar.gz
+        state: absent
+    - name: build docker image for app
+      community.docker.docker_image:
+        build:
+          path: /home/vagrant/wb6
+          pull: yes
+        name: myapp:latest
+        source: build
+        state: present
+    - name: run container
+      community.docker.docker_container:
+        name: myapp
+        image: myapp:latest
+        state: started
+        restart_policy: always
+        published_ports:
+          - "8080:8080"
